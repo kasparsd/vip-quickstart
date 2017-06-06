@@ -8,7 +8,7 @@ end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.box = "ubuntu/precise32"
+  config.vm.box = "ubuntu/trusty32"
   config.vm.hostname = 'vip.local'
 
   # Virtualbox overrides
