@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# Checkout SVN repos from the host machine to speed things up.
+#
+
+cd "$( dirname "$0" )/.."
+
+if ! [ -x "$(command -v svn)" ]; then
+	echo "Subversion not found."
+	exit 1
+fi
+
+# WordPress core
+svn checkout https://core.svn.wordpress.org/trunk/ www/wp
+
+# WordPress developer tools
+svn checkout https://develop.svn.wordpress.org/trunk/ www/wp-tests
+
+# VIP shared plugins
+mkdir -p www/wp-content/themes/vip/plugins
+svn checkout https://vip-svn.wordpress.com/plugins/ www/wp-content/themes/vip/plugins
