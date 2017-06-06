@@ -12,7 +12,7 @@ class Veryquickstart
     if settings.include? 'sites'
       settings["sites"].each do |key, site|
         # Collect hosts for the hostupdater.
-        site_hosts.push(*site["hosts"])
+        site_hosts.concat site["hosts"]
       end
     end
 
