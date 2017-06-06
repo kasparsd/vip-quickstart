@@ -3,7 +3,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 #Vagrant.require_version ">= 1.5.0"
 if `vagrant --version` < 'Vagrant 1.5.0'
-    abort('Your Vagrant is too old. Please install at least 1.5.0')
+  abort('Your Vagrant is too old. Please install at least 1.5.0')
 end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
