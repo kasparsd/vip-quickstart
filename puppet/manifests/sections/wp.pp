@@ -8,7 +8,6 @@ $plugins = [
   # WordPress.com
   'keyring',
   'mrss',
-  'polldaddy',
   'rewrite-rules-inspector',
 ]
 
@@ -19,24 +18,17 @@ $github_plugins = {
     'jetpack'        => 'https://github.com/Automattic/jetpack',
     'media-explorer' => 'https://github.com/Automattic/media-explorer',
     'writing-helper' => 'https://github.com/automattic/writing-helper',
-    'amp'            =>  'https://github.com/automattic/amp-wp',
+    'amp'            => 'https://github.com/automattic/amp-wp',
 }
 
 include database::settings
-
-# Delete broken plugins
-file { '/srv/www/wp-content/plugins/log-viewer':
-  ensure => 'absent',
-  force  => true,
-  before => Wp::Site['/srv/www/wp'],
-}
 
 # Install WordPress
 wp::site { '/srv/www/wp':
   url             => $quickstart_domain,
   sitename        => $quickstart_domain,
   admin_user      => 'wordpress',
-  admin_password => 'wordpress',
+  admin_password  => 'wordpress',
   network         => true,
   require         => [
     Vcsrepo['/srv/www/wp'],
@@ -47,7 +39,10 @@ wp::site { '/srv/www/wp':
 # Install GitHub Plugins
 $github_plugin_keys = keys( $github_plugins )
 gitplugin { $github_plugin_keys:
-    git_urls => $github_plugins
+    git_urls => $github_plugins,
+    require  => [
+      Vcsrepo['/srv/www/wp']
+    ]
 }
 
 # Install plugins
@@ -56,7 +51,6 @@ wp::plugin { $plugins:
   networkwide => true,
   require     => [
     Wp::Site['/srv/www/wp'],
-    File['/srv/www/wp-content/plugins'],
     Gitplugin[ $github_plugin_keys ],
   ]
 }
@@ -77,31 +71,6 @@ file { '/srv/www/wp-content/db.php':
 
 # Install WP-CLI
 class { 'wp::cli': ensure  => installed }
-
-# Make sure the wp-content directories exists
-$wp_content_dirs = [
-  '/srv/www/wp-content/themes',
-  '/srv/www/wp-content/plugins',
-  '/srv/www/wp-content/upgrade',
-  '/srv/www/wp-content/uploads',
-]
-
-file { '/srv/www/wp-content':
-    ensure  => directory,
-    recurse => false,
-    mode    => 0775,
-    owner   => 'www-data',
-    group   => 'www-data',
-}
-
-
-file { $wp_content_dirs:
-    ensure  => directory,
-    recurse => true,
-    mode    => 0664,
-    owner   => 'www-data',
-    group   => 'www-data',
-}
 
 # VCS Checkout
 vcsrepo { '/srv/www/wp':
@@ -126,12 +95,6 @@ cron { '/srv/www/wp-content/themes/vip/plugins':
   command => '/usr/bin/svn up /srv/www/wp-content/themes/vip/plugins > /dev/null 2>&1',
   minute  => '0',
   hour    => '*',
-}
-
-vcsrepo { '/srv/www/wp-content/themes/pub/twentyfifteen':
-  ensure   => latest,
-  source   => 'https://wpcom-themes.svn.automattic.com/twentyfifteen',
-  provider => svn,
 }
 
 vcsrepo { '/srv/www/wp-tests':

@@ -1,7 +1,0 @@
-rvm: 1.9.3
-notifications:
-    email:
-        - joshb@a8c.com
-env:
-    - PUPPET_VERSION=2.6.14
-    - PUPPET_VERSION=2.7.11

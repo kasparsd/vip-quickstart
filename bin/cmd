@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Run commands directly on the virtual machine.
+#
+
+cd "$( dirname "$0" )/.."
+
+vagrant ssh -c "cd /srv/www && $@"

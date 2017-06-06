@@ -3,6 +3,7 @@ $tools = [
     'vim',
     'unzip',
     'zip',
+    'subversion',
 ]
 
 package { $tools: }

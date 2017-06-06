@@ -1,44 +1,69 @@
-![VIP Quickstart](http://vip.wordpress.com/wp-content/themes/a8c/wpcomvip3/img/illustrations/developmenttools-03.svg)
+This is a fork of the [VIP Quickstart development environment](http://vip.wordpress.com/documentation/quickstart/) with improved performance and reliability.
 
-**Note:** VIP Quickstart is deprecated as of March 13, 2017. Support for Quickstart will continue through April 21, 2017. For new environments, we recommend using Chassis or VVV as detailed in the [Local Environment documentation](https://vip.wordpress.com/documentation/vip/dev-environment/).
+## Requirements
 
-For full documentation, see [http://vip.wordpress.com/documentation/quickstart/](http://vip.wordpress.com/documentation/quickstart/).
+- [VirtualBox 5.x](https://www.virtualbox.org/wiki/Downloads)
+- [Vagrant 1.x](https://www.vagrantup.com/downloads.html)
 
-## Overview
 
-VIP Quickstart is a local development environment for WordPress.com VIP developers. It provides developers with an environment that closely mirrors WordPress.com along with all the tools we recommend developers use. VIP Quickstart should not be used to run a production site.
+## Getting Started
+
+Clone this repository to your project folder:
+
+	$ git clone --recursive https://github.com/kasparsd/vip-veryquickstart.git
+
+Run the setup script which will provision the instance:
+
+	$ cd vip-veryquickstart
+	$ vagrant up
+
+Most of the time during Vagrant provisioning is spent fetching the [VIP shared plugins](https://vip-svn.wordpress.com/plugins/) and the [WordPress development tools](https://develop.svn.wordpress.org/trunk/). Run `bin/svn-checkout` before `vagrant up` to fetch the SVN repositories from the host machine.
+
+
+### WordPress Login
+
+Login at http://vip.local/wp-login.php:
+
+- Username: `wordpress`
+- Password: `wordpress`
+
 
 ## What You Get
 
-*   Ubuntu 12.04
-*   WordPress trunk
-*   WordPress.com VIP Shared Plugins repository
-*   WordPress multisite
-*   WordPress unit tests
-*   Custom WordPress.com modifications
-*   WP-CLI
-*   MySQL
-*   PHP
-*   Nginx
-*   PHPUnit
+- Ubuntu 14.04 LTS
+- WordPress trunk
+- WordPress.com VIP shared plugin repository
+- WordPress multisite
+- WordPress unit tests
+- Custom WordPress.com modifications
+- WP-CLI
+- MySQL
+- PHP 7.0
+- Nginx
+- PHPUnit
 
-## Acknowledgements
 
-Thanks to the following projects that VIP Quickstart is built on:
+## Structure
 
-* [Vagrant](http://vagrantup.com/)
-* [Puppet](http://puppetlabs.com/)
-* [Varying Vagrant Vagrants](https://github.com/10up/varying-vagrant-vagrants)
-* [WP-CLI](http://wp-cli.org)
-* [puppet-mysql](https://github.com/example42/puppet-mysql)
-* [puppet-nginx](https://github.com/example42/puppet-nginx)
-* [puppet-php](https://github.com/jippi/puppet-php)
-* [puppi](https://github.com/example42/puppi)
-* [puppet-wp](https://github.com/rmccue/puppet-wp)
+- `bin` - Scripts.
+- `puppet` - All Puppet manifests, modules, and templates.
+- `www` - The web root, this is where all WordPress files live.
+    - `config` - VIP specific configuration files.
+    - `wp` - SVN checkout of [WordPress core](http://core.svn.wordpress.org/trunk/).
+    - `wp-cli` - The latest stable version of WP-CLI.
+    - `wp-content` - The regular `wp-content` directory for themes, plugins and uploads.
+        - `themes/vip` - The VIP themes directory.
+        - `themes/vip/plugins` - The VIP shared plugins directory.
+    - `wp-tests` - SVN checkout of [WordPress development tools](http://develop.svn.wordpress.org/trunk/).
+    - `local-config.php` - A local WordPress configuration file that is generated during provisioning and is not included in the version control.
+    - `wp-cli.yml` - The WP-CLI config.
 
-If you're not developing for WordPress.com VIP, you might want to check out these other Vagrant/WordPress projects
+## Puppet
 
-* [VVV](https://github.com/Varying-Vagrant-Vagrants/VVV)
-* [Salty WordPress](https://github.com/humanmade/Salty-WordPress)
-* [Vagrant Genesis](https://github.com/genesis/wordpress/)
-* [VagrantPress](https://github.com/chad-thompson/vagrantpress)
+Manifests that live in `puppet/manifests/sections` get loaded automatically. If you're working on something that doesn't fit into any of the current sections, create a new one there.
+
+When adding a module, add it as a git submodule in `puppet/modules`. Actively developed repositories are prefered to stale ones.
+
+## WordPress
+
+Plugins can be added in Puppet by adding it to the list in `puppet/manifests/sections/wp.pp`
