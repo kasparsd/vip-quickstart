@@ -57,3 +57,13 @@ Login at http://vip.local/wp-login.php:
     - `wp-tests` - SVN checkout of [WordPress development tools](http://develop.svn.wordpress.org/trunk/).
     - `local-config.php` - A local WordPress configuration file that is generated during provisioning and is not included in the version control.
     - `wp-cli.yml` - The WP-CLI config.
+
+## Puppet
+
+Manifests that live in `puppet/manifests/sections` get loaded automatically. If you're working on something that doesn't fit into any of the current sections, create a new one there.
+
+When adding a module, add it as a git submodule in `puppet/modules`. Actively developed repositories are prefered to stale ones.
+
+## WordPress
+
+Plugins can be added in Puppet by adding it to the list in `puppet/manifests/sections/wp.pp`
