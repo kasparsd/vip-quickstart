@@ -29,7 +29,7 @@ wp::site { '/srv/www/wp':
   url             => $quickstart_domain,
   sitename        => $quickstart_domain,
   admin_user      => 'wordpress',
-  admin_password => 'wordpress',
+  admin_password  => 'wordpress',
   network         => true,
   require         => [
     Vcsrepo['/srv/www/wp'],
