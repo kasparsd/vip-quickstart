@@ -7,7 +7,6 @@ define gitplugin ( $git_urls ) {
         provider => git,
         require  => [
             Wp::Site['/srv/www/wp'],
-            File['/srv/www/wp-content/plugins'],
         ]
     }
 
