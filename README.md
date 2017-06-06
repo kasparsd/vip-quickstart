@@ -15,9 +15,9 @@ Clone this repository to your project folder:
 Run the setup script which will provision the instance:
 
 	$ cd vip-veryquickstart
-	$ vagrant up --provision
+	$ vagrant up
 
-Most of the time during Vagrant provisioning is spent fetching the [VIP shared plugins](https://vip-svn.wordpress.com/plugins/) and the [WordPress development tools](https://develop.svn.wordpress.org/trunk/).
+Most of the time during Vagrant provisioning is spent fetching the [VIP shared plugins](https://vip-svn.wordpress.com/plugins/) and the [WordPress development tools](https://develop.svn.wordpress.org/trunk/). Run `bin/svn-checkout` before `vagrant up` to fetch the SVN repositories from the host machine.
 
 
 ### WordPress Login
