@@ -1,5 +1,11 @@
 This is a fork of the [VIP Quickstart development environment](http://vip.wordpress.com/documentation/quickstart/) with improved performance and reliability.
 
+## Requirements
+
+- [VirtualBox 5.x](https://www.virtualbox.org/wiki/Downloads)
+- [Vagrant 1.x](https://www.vagrantup.com/downloads.html)
+
+
 ## Getting Started
 
 Clone this repository to your project folder:
