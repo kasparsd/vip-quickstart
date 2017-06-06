@@ -29,15 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--nictype1", "Am79C973"]
   end
 
-  # VMWare Fusion overrides
-  config.vm.provider "vmware_fusion" do |v|
-    # Use 1GB of memory in vmware_fusion
-    v.memory = 1024
-
-    v.vm.box = "precise64-vmware"
-    v.vm.box_url = "http://files.vagrantup.com/precise64_vmware.box"
-  end
-
   config.vm.synced_folder ".", "/srv", owner: 'www-data', group: 'www-data', mount_options: ["dmode=775", "fmode=664"]
 
   # Address a bug in an older version of Puppet
