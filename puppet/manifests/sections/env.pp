@@ -19,9 +19,3 @@ if ( $quickstart_domain ) {
 
 # Set up Zeroconf (Bonjour)
 package { 'libnss-mdns': ensure => present }
-
-# Ensure networking service is running
-service { 'networking':
-  ensure    => running,
-  hasstatus => false,
-}
