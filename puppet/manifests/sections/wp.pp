@@ -8,7 +8,6 @@ $plugins = [
   # WordPress.com
   'keyring',
   'mrss',
-  'polldaddy',
   'rewrite-rules-inspector',
 ]
 
