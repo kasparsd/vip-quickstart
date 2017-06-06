@@ -40,7 +40,10 @@ wp::site { '/srv/www/wp':
 # Install GitHub Plugins
 $github_plugin_keys = keys( $github_plugins )
 gitplugin { $github_plugin_keys:
-    git_urls => $github_plugins
+    git_urls => $github_plugins,
+    require  => [
+      Vcsrepo['/srv/www/wp']
+    ]
 }
 
 # Install plugins
