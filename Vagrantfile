@@ -10,6 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = "ubuntu/trusty32"
   config.vm.hostname = 'vip.local'
+  config.vm.network "private_network", type: "dhcp"
 
   # Virtualbox overrides
   config.vm.provider "virtualbox" do |v|
