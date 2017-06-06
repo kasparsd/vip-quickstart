@@ -8,21 +8,21 @@ Clone this repository to your project folder:
 
 Run the setup script which will provision the instance:
 
-	$ ./vip-veryquickstart/bin/vip-init --domain=yourproject.local
+	$ ./vip-veryquickstart/bin/init --domain=yourproject.local
 
-where `yourproject.local` is the domain name for the main site.
+where `yourproject.local` is the domain name for the multisite install.
 
 
 ## What You Get
 
 - Ubuntu 14.04 LTS
 - WordPress trunk
-- WordPress.com VIP Shared Plugins repository
+- WordPress.com VIP shared plugin repository
 - WordPress multisite
 - WordPress unit tests
 - Custom WordPress.com modifications
 - WP-CLI
 - MySQL
-- PHP
+- PHP 7.0
 - Nginx
 - PHPUnit
