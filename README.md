@@ -12,6 +12,11 @@ Run the setup script which will provision the instance:
 
 where `yourproject.local` is the domain name for the multisite install.
 
+### WordPress Login
+
+- Username: `wordpress`
+- Password: `wordpress`
+
 
 ## What You Get
 
