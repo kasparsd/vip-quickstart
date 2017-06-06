@@ -52,7 +52,6 @@ wp::plugin { $plugins:
   networkwide => true,
   require     => [
     Wp::Site['/srv/www/wp'],
-    File['/srv/www/wp-content/plugins'],
     Gitplugin[ $github_plugin_keys ],
   ]
 }
