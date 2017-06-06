@@ -21,4 +21,7 @@ if ( $quickstart_domain ) {
 package { 'libnss-mdns': ensure => present }
 
 # Ensure networking service is running
-service { 'networking': ensure => running }
+service { 'networking':
+  ensure    => running,
+  hasstatus => false,
+}
