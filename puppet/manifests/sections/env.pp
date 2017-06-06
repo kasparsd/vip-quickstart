@@ -11,9 +11,8 @@ if 'physical' == $::virtual {
 # Setup hosts file:
 if ( $quickstart_domain ) {
   line { 'hosts':
-    file   => '/etc/hosts',
-    line   => "127.0.0.1 ${quickstart_domain}",
-    notify => Service['networking'],
+    file => '/etc/hosts',
+    line => "127.0.0.1 ${quickstart_domain}",
   }
 }
 
