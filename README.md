@@ -10,18 +10,19 @@ This is a fork of the [VIP Quickstart development environment](http://vip.wordpr
 
 Clone this repository to your project folder:
 
-	$ git clone https://github.com/kasparsd/vip-veryquickstart.git
+	$ git clone --recursive https://github.com/kasparsd/vip-veryquickstart.git
 
 Run the setup script which will provision the instance:
 
-	$ ./vip-veryquickstart/bin/init --domain=yourproject.local
-
-where `yourproject.local` is the domain name for the multisite install.
+	$ cd vip-veryquickstart
+	$ vagrant up --provision
 
 Most of the time during Vagrant provisioning is spent fetching the [VIP shared plugins](https://vip-svn.wordpress.com/plugins/) and the [WordPress development tools](https://develop.svn.wordpress.org/trunk/).
 
 
 ### WordPress Login
+
+Login at http://vip.local/wp-login.php:
 
 - Username: `wordpress`
 - Password: `wordpress`
