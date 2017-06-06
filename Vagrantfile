@@ -1,13 +1,21 @@
+require 'yaml'
+require 'pp'
+
 # Vagrantfile API/syntax version.
 VAGRANTFILE_API_VERSION = "2"
+
+require File.expand_path('scripts/provision.rb')
 
 Vagrant.require_version '>= 1.5.0'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = "ubuntu/trusty32"
-  config.vm.hostname = 'vip.local'
-  config.vm.network 'private_network', ip: '10.86.73.73'
+  config.vm.hostname = "veryquickstart"
+
+  # Load custom site config
+  settings = YAML::load_file('config-sample.yml')
+  Veryquickstart.configure(config, settings)
 
   # Virtualbox overrides
   config.vm.provider "virtualbox" do |v|
