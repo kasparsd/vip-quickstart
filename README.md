@@ -18,6 +18,9 @@ Run the setup script which will provision the instance:
 
 where `yourproject.local` is the domain name for the multisite install.
 
+Most of the time during Vagrant provisioning is spent fetching the [VIP shared plugins](https://vip-svn.wordpress.com/plugins/) and the [WordPress development tools](https://develop.svn.wordpress.org/trunk/).
+
+
 ### WordPress Login
 
 - Username: `wordpress`
