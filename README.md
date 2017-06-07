@@ -1,4 +1,4 @@
-This is a fork of the [VIP Quickstart development environment](http://vip.wordpress.com/documentation/quickstart/) with improved performance and reliability.
+This is a fork of the [VIP Quickstart development environment](http://vip.wordpress.com/documentation/quickstart/) with improved performance and reliability. This project is not affiliated with Automattic.
 
 ## Requirements
 
