@@ -43,6 +43,16 @@ Login at http://vip.local/wp-login.php:
 - PHPUnit
 
 
+## Why is Quickstart Special
+
+- VIP specific config file `www/wp-config.php` which includes custom domain mapping logic and `www/wp-content/sunrise.php`.
+- VIP must-use plugins `www/wp-content/mu-plugins` with VIP specific configuration and filters.
+- Object cache `www/wp-content/object-cache.php` and Batcache for full page caching `www/wp-content/advanced-cache.php`.
+- VIP shared plugins in `www/wp-content/themes/vip/plugins`
+- PHP and Nginx config similar to that of VIP servers including memory limit, upload size and request variable count limit.
+- Automatic loading of `inc/wpcom.php` and `/includes/wpcom.php` from theme in `www/wp-content/mu-plugins/wpcom.php`.
+
+
 ## Structure
 
 - `bin` - Scripts.
