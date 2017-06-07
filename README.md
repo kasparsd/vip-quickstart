@@ -1,5 +1,10 @@
 This is a fork of the [VIP Quickstart development environment](http://vip.wordpress.com/documentation/quickstart/) with improved performance and reliability. This project is not affiliated with Automattic.
 
+## Project Goals
+
+Create a reliable config based development environment for working with multiple VIP sites. See the [work in progress](https://github.com/kasparsd/vip-veryquickstart/pull/2/files).
+
+
 ## Requirements
 
 - [VirtualBox 5.x](https://www.virtualbox.org/wiki/Downloads)
