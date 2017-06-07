@@ -11,16 +11,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Virtualbox overrides
   config.vm.provider "virtualbox" do |v|
-    # Use 1GB of memory
-    v.memory = 1024
-
-    # Use 2 CPUs
-    v.cpus = 2
-
+    v.customize ["modifyvm", :id, "--cpus", "1"]
+    v.customize ["modifyvm", :id, "--memory", "1024"]
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
-    v.customize ["modifyvm", :id, "--ioapic", "on"]
-    v.customize ["modifyvm", :id, "--nictype1", "Am79C973"]
   end
 
   config.vm.synced_folder ".", "/srv", owner: 'www-data', group: 'www-data', mount_options: ["dmode=775", "fmode=775"]
