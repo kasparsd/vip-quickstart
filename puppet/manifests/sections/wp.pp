@@ -97,6 +97,12 @@ cron { '/srv/www/wp-content/themes/vip/plugins':
   hour    => '*',
 }
 
+vcsrepo { '/srv/www/wp-content/themes/pub/twentyseventeen':
+  ensure   => latest,
+  source   => 'https://wpcom-themes.svn.automattic.com/twentyseventeen',
+  provider => svn,
+}
+
 vcsrepo { '/srv/www/wp-tests':
   ensure   => latest,
   source   => 'https://develop.svn.wordpress.org/trunk/',

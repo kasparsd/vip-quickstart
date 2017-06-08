@@ -76,6 +76,10 @@ if ( ! defined( 'SUBDOMAIN_INSTALL' ) ) {
 	define( 'SUBDOMAIN_INSTALL', false );
 }
 
+if ( ! defined( 'WP_DEFAULT_THEME' ) ) {
+	define( 'WP_DEFAULT_THEME', 'pub/twentyseventeen' );
+}
+
 define( 'WP_MEMORY_LIMIT', '64M' );
 define( 'WP_MAX_MEMORY_LIMIT', '256M' );
 
