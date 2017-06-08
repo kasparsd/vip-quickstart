@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.manifests_path = "puppet/manifests"
     puppet.manifest_file = "init.pp"
     puppet.options = ['--templatedir', '/srv/puppet/files']
-    puppet.environment_variables = {
+    puppet.facter = {
       "quickstart_domain" => 'vip.local',
     }
   end
