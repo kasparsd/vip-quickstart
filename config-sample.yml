@@ -1,0 +1,17 @@
+---
+hostname: veryquickstart.local
+ip: 192.168.74.74
+
+sites:
+  veryquick-sample:
+    themes:
+      sample-theme: "https://github.com/WordPress/twentysixteen.git"
+    plugins:
+      widget-context: ~
+      akismet: ~
+    hosts:
+      - veryquick.local
+      - another.local
+  some-other:
+    hosts:
+      - one.local
